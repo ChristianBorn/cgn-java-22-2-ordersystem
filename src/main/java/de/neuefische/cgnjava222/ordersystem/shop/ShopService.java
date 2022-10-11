@@ -12,6 +12,11 @@ public class ShopService {
     private final ProductRepo productRepo;
     private final OrderRepo orderRepo;
 
+    public ShopService() {
+        this.productRepo = new ProductRepo();
+        this.orderRepo = new OrderRepo();
+    }
+
     public ShopService(
             ProductRepo productRepo,
             OrderRepo orderRepo) {
