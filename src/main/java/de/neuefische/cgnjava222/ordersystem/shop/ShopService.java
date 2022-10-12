@@ -4,10 +4,11 @@ import de.neuefische.cgnjava222.ordersystem.shop.order.Order;
 import de.neuefische.cgnjava222.ordersystem.shop.order.OrderRepo;
 import de.neuefische.cgnjava222.ordersystem.shop.product.Product;
 import de.neuefische.cgnjava222.ordersystem.shop.product.ProductRepo;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class ShopService {
     private final ProductRepo productRepo;
     private final OrderRepo orderRepo;
@@ -32,7 +33,7 @@ public class ShopService {
         return productRepo.listProducts();
     }
 
-    public void addOrder(int orderId, List<Integer> productIds) {
+    public Order addOrder(int orderId, List<Integer> productIds) {
         List<Product> products = new ArrayList<>();
         for (int productId : productIds) {
             Product product = productRepo.getProduct(productId);
@@ -41,6 +42,7 @@ public class ShopService {
 
         Order order = new Order(orderId, products);
         orderRepo.addOrder(order);
+        return order;
     }
 
     public Order getOrder(int orderId) {
@@ -49,5 +51,13 @@ public class ShopService {
 
     public List<Order> listOrders() {
         return orderRepo.listOrders();
+    }
+
+    public void deleteOrder(Integer id) {
+        orderRepo.deleteOrder(id);
+    }
+
+    public void addNewProduct(Product product) {
+        productRepo.addProduct(product);
     }
 }

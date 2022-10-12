@@ -1,10 +1,13 @@
 package de.neuefische.cgnjava222.ordersystem.shop.order;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@Component
 public class OrderRepo {
 
     private final Map<Integer, Order> orders = new HashMap<>();
@@ -19,5 +22,9 @@ public class OrderRepo {
 
     public List<Order> listOrders() {
         return new ArrayList<>(orders.values());
+    }
+
+    public void deleteOrder(Integer id) {
+        orders.remove(id);
     }
 }

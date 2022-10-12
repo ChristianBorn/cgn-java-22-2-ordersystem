@@ -117,4 +117,12 @@ class ShopServiceTest {
             // perfect, exception was thrown
         }
     }
+
+    @Test
+    void testDeleteOrder() {
+        //GIVEN
+
+        //WHEN
+        //THEN
+    }
 }

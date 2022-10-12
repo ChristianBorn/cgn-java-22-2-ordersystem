@@ -1,10 +1,13 @@
 package de.neuefische.cgnjava222.ordersystem.shop.product;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-
+@Component
 public class ProductRepo {
 
     private final Map<Integer, Product> products = Map.of(
@@ -24,5 +27,9 @@ public class ProductRepo {
 
     public List<Product> listProducts() {
         return new ArrayList<>(products.values());
+    }
+
+    public void addProduct(Product product) {
+        products.put(products.size()+1, product);
     }
 }
