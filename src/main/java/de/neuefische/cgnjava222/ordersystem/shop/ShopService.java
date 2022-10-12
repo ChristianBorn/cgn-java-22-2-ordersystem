@@ -53,8 +53,8 @@ public class ShopService {
         return orderRepo.listOrders();
     }
 
-    public void deleteOrder(Integer id) {
-        orderRepo.deleteOrder(id);
+    public Order deleteOrder(Integer id) {
+        return orderRepo.deleteOrder(id);
     }
 
     public void addNewProduct(Product product) {

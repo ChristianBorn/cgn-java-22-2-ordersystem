@@ -24,7 +24,7 @@ public class OrderRepo {
         return new ArrayList<>(orders.values());
     }
 
-    public void deleteOrder(Integer id) {
-        orders.remove(id);
+    public Order deleteOrder(Integer id) {
+        return orders.remove(id);
     }
 }

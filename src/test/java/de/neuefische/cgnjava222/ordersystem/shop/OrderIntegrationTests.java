@@ -57,4 +57,28 @@ public class OrderIntegrationTests {
                 .andExpect(content().json(expected));
     }
 
+    @Test
+    @DirtiesContext
+    void deleteOrderTest() throws Exception {
+        String input = mvc.perform(MockMvcRequestBuilders.post("/api/orders")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .content("""
+                                        []
+                                        """))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+
+        mvc.perform(MockMvcRequestBuilders.delete("/api/orders?ordertodelete=1"))
+                .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+
+
+        String expected = "[]";
+
+
+        mvc.perform(MockMvcRequestBuilders.get("/api/orders"))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expected));
+    }
+
 }

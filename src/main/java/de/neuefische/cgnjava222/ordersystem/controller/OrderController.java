@@ -26,7 +26,7 @@ public class OrderController extends ApiController {
     }
 
     @DeleteMapping
-    public void deleteOrder(@RequestParam int ordertodelete) {
-        newShop.deleteOrder(ordertodelete);
+    public Order deleteOrder(@RequestParam int ordertodelete) {
+        return newShop.deleteOrder(ordertodelete);
     }
 }
